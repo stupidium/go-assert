@@ -22,6 +22,10 @@ func (e AssertionError) Unwrap() error {
 	return e.underlying_error;
 }
 
+func NewAssertionError(underlying_error error) error {
+	return &AssertionError{underlying_error};
+}
+
 //StatementFalse implements error
 type StatementFalseError struct {};
 

@@ -5,7 +5,7 @@ package assert;
 //panics if assertion fails
 func T(val bool) {
 	if !val {
-		panic(AssertionError{StatementFalseError{}});
+		panic(NewAssertionError(StatementFalseError{}));
 	}
 }
 
@@ -14,10 +14,10 @@ func T(val bool) {
 //error message includes the values being compared
 func Eq[T comparable](first, second T) {
 	if first!=second {
-		panic(AssertionError{NotEqualError[T]{Pair[T]{
+		panic(NewAssertionError(NotEqualError[T]{Pair[T]{
 			first:first,
 			second: second,
-		}}});
+		}}));
 	}
 }
 
@@ -26,9 +26,9 @@ func Eq[T comparable](first, second T) {
 //error message includes the values being compared
 func Ueq[T comparable](first, second T) {
 	if first==second {
-		panic(AssertionError{NotEqualError[T]{Pair[T]{
+		panic(NewAssertionError(NotEqualError[T]{Pair[T]{
 			first:first,
 			second: second,
-		}}});
+		}}));
 	}
 }
