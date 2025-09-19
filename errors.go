@@ -35,6 +35,10 @@ func (e StatementFalseError) Error() string {
 	return error_phrasing;
 }
 
+func NewStatementFalseError() StatementFalseError {
+	return StatementFalseError{}
+};
+
 type Pair[T comparable] struct {
 	first, second T;
 }

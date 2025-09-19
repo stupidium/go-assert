@@ -5,7 +5,7 @@ package assert;
 //panics if assertion fails
 func T(val bool) {
 	if !val {
-		panic(NewAssertionError(StatementFalseError{}));
+		panic(NewAssertionError(NewStatementFalseError()));
 	}
 }
 
