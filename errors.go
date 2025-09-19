@@ -51,6 +51,15 @@ func (e NotEqualError[T]) Error() string {
 	return fmt.Sprintf("%v is not equal to %v, expecting equality",e.first,e.second);
 }
 
+func NewNotEqualError[T comparable](first, second T) error {
+	return &NotEqualError[T] {
+		Pair[T]{
+			first: first,
+			second: second,
+		},
+	};
+}
+
 //EqualError implements error
 //stores the values that need comparison in the underlying pair,
 //access through the .First() and .Second() methods
@@ -58,4 +67,13 @@ type EqualError[T comparable] struct{Pair[T]};
 
 func (e EqualError[T]) Error() string {
 	return fmt.Sprintf("%v is equal to %v, expecting inequality",e.first,e.second);
+}
+
+func NewEqualError[T comparable](first, second T) error {
+	return &EqualError[T] {
+		Pair[T]{
+			first: first,
+			second: second,
+		},
+	};
 }

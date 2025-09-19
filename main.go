@@ -14,10 +14,11 @@ func T(val bool) {
 //error message includes the values being compared
 func Eq[T comparable](first, second T) {
 	if first!=second {
-		panic(NewAssertionError(NotEqualError[T]{Pair[T]{
-			first:first,
-			second: second,
-		}}));
+		panic(
+			NewAssertionError(
+				NewNotEqualError(first,second),
+			),
+		);
 	}
 }
 
@@ -26,9 +27,10 @@ func Eq[T comparable](first, second T) {
 //error message includes the values being compared
 func Ueq[T comparable](first, second T) {
 	if first==second {
-		panic(NewAssertionError(NotEqualError[T]{Pair[T]{
-			first:first,
-			second: second,
-		}}));
+		panic(
+			NewAssertionError(
+				NewEqualError(first,second),
+			),
+		);
 	}
 }
