@@ -25,7 +25,7 @@ func logError(t *testing.T, name interface{}, msg ...interface{}) {
     if ok {
         t.Errorf("error with %v at %s:%d:%v", name, file, no, msg)
     } else {
-		panic(fmt.Errorf("error with %v", name));
+		panic(fmt.Errorf("cannot read caller: error with %v", name));
 	}
 }
 
